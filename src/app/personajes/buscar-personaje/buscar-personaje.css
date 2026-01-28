@@ -1,0 +1,12 @@
+.tablaPersonajes table {
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 5% auto;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}

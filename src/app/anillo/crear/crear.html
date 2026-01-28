@@ -1,0 +1,56 @@
+<div class="barraBusqueda">
+    <div class="acciones">
+        <table>
+            <tr>
+                <td><button routerLink="/buscar" id="buscarAnillo">Buscar Anillo</button></td>
+                <td><button routerLink="/crear" id="crearAnillo" disabled>Crear Anillo</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="formulario">
+    <form [formGroup]="formulario" (ngSubmit)="enviar()">
+
+        <div>
+            <label>Nombre del Anillo</label>
+            <input pInputText type="text" formControlName="nombre">
+            @if (formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched) {
+                <small>Error: El nombre es obligatorio</small>
+            }
+        </div>
+
+        <div>
+            <label>Poder / Descripción</label>
+            <textarea pTextarea formControlName="poder" rows="3"></textarea>
+            @if (formulario.get('poder')?.invalid && formulario.get('poder')?.touched) {
+                <small>Error: Describe el poder</small>
+            }
+        </div>
+
+        <div>
+            <label>Portador actual</label>
+            <input pInputText type="text" formControlName="portador">
+        </div>
+
+        <div>
+            <label>Raza Creadora</label>
+            <p-select [options]="razas" formControlName="raza" placeholder="Selecciona raza"></p-select>
+        </div>
+
+        <div>
+            <label>
+                Nivel de corrupción
+                <span>
+                    {{ formulario.get('corrupcion')?.value }}
+                </span>
+            </label>
+            <p-slider style="margin-top: 20px; margin-bottom: 20px;" formControlName="corrupcion" [min]="0" [max]="100"></p-slider>
+        </div>
+
+        <div style="margin-top: 15px;">
+            <p-button type="submit" [disabled]="formulario.invalid">Guardar Anillo</p-button>
+        </div>
+
+    </form>
+</div>

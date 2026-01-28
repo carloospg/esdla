@@ -1,0 +1,19 @@
+.contenedor-detalle {
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+.contenedor-detalle input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.botones-accion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}

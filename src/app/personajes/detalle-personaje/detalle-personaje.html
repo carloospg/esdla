@@ -1,0 +1,35 @@
+<div class="contenedor-detalle" style="padding: 20px;">
+    
+    <h2>{{ esEdicion ? 'Editar Personaje' : 'Nuevo Personaje' }}</h2>
+
+    <form [formGroup]="formulario" (ngSubmit)="guardar()">
+        
+        @if (esEdicion) {
+            <div style="margin-bottom: 15px;">
+                <label style="display:block">ID:</label>
+                <input pInputText type="text" formControlName="id" />
+            </div>
+        }
+
+        <div style="margin-bottom: 15px;">
+            <label style="display:block">Nombre:</label>
+            <input pInputText type="text" formControlName="nombre" />
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display:block">Raza:</label>
+            <input pInputText type="text" formControlName="raza" />
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display:block">Fecha Nacimiento:</label>
+            <input pInputText type="text" formControlName="fechaNacimiento" placeholder="YYYY-MM-DD" />
+        </div>
+
+        <div class="botones-accion">
+            <button pButton type="button" label="Volver" class="p-button-secondary" (click)="volver()"></button>
+            <button pButton type="submit" label="Guardar"></button>
+        </div>
+
+    </form>
+</div>
