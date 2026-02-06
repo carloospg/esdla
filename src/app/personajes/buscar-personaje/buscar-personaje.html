@@ -1,11 +1,13 @@
 <div class="tablaPersonajes">
-  
+  <p-toast></p-toast>
+  <p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
   <table>
     <tr>
       <th>Nombre</th>
       <th>Raza</th>
       <th>Fecha Nacimiento</th>
-      <th>Acciones</th>
+      <th style="min-width: 350px">Acciones</th>
     </tr>
 
     @for (item of personajes; track item.id) {
@@ -13,12 +15,47 @@
         <td>{{ item.nombre }}</td>
         <td>{{ item.raza }}</td>
         <td>{{ item.fechaNacimiento }}</td>
-        <td><input type="button" id="btnEditar" (click)="editar(item.id)" value="Editar" /></td>
+
+        <td style="display: flex; gap: 5px; align-items: center; justify-content: center">
+          <input type="button" id="btnEditar" (click)="editar(item.id)" value="Editar" />
+
+          <p-button
+            icon="pi pi-trash"
+            [rounded]="true"
+            severity="danger"
+            pTooltip="Baja Física"
+            (onClick)="confirmarBajaFisica($event, item.id)"
+          >
+          </p-button>
+
+          @if (item.fechaBaja) {
+            <p-button
+              icon="pi pi-undo"
+              [rounded]="true"
+              severity="success"
+              pTooltip="Reactivar"
+              (onClick)="confirmarReactivacion($event, item.id)"
+            >
+            </p-button>
+          } @else {
+            <p-button
+              icon="pi pi-ban"
+              [rounded]="true"
+              severity="success"
+              pTooltip="Baja Lógica"
+              (onClick)="confirmarBajaLogica($event, item.id)"
+            >
+            </p-button>
+          }
+        </td>
       </tr>
     } @empty {
-      <li>no hay</li>
+      <tr>
+        <td colspan="4">No hay personajes</td>
+      </tr>
     }
   </table>
+
   <div class="card flex justify-center">
     <button pButton (click)="crearPersonaje()">
       <i class="pi pi-check" pButtonIcon></i>

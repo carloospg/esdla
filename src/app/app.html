@@ -11,6 +11,8 @@
       <button routerLink="/detalle2">Explorar Razas</button>
       <button routerLink="/detalle">Ver Anillos</button>
       <button routerLink="/personajes">Ver Personajes</button>
+      <button routerLink="/padre">Clase Modales</button>
+      <button (click)="abrirModal()">Modal</button>
     </div>
   </div>
 </header>
@@ -21,3 +23,4 @@
 }-->
 
 <router-outlet />
+<app-confirmar-popup [config]="confirmDelete"></app-confirmar-popup>

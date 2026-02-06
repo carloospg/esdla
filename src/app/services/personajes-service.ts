@@ -26,4 +26,17 @@ export class Personajes {
     return this.http.put<any>(`${this.baseUrl}actualizarPersonaje/${id}`,personaje)
   }
 
+  darBajaFisica(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}bajaFisica/${id}`);
+  }
+
+  darBajaLogica(id: number): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}bajaLogica/${id}`, {});
+  }
+
+  reactivarPersonaje(id: number): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}reactivar/${id}`, {})
+  }
+
+  
 }
