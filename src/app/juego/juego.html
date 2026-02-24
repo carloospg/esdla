@@ -1,0 +1,63 @@
+<div class="juego-container">
+    <p-toast></p-toast>
+    
+    <div class="header-juego">
+        <h1>LOS ANILLOS DE PODER</h1>
+        <p>Antes de la Comunidad. Antes del Anillo Unico. El origen de la oscuridad</p>
+    </div>
+
+    @if (!preguntaActual && !juegoTerminado) {
+        <div class="stats-board">
+            <h2>— Estadisticas —</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="stat-title">Victorias</span>
+                    <i class="pi pi-trophy icon-gold"></i>
+                    <span class="stat-value">{{ stats.victorias }}</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-title">Total Partidas Jugadas</span>
+                    <span class="stat-value-main">{{ stats.total }}</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-title">Derrotas</span>
+                    <i class="pi pi-times-circle icon-red"></i>
+                    <span class="stat-value">{{ stats.derrotas }}</span>
+                </div>
+            </div>
+
+            <div class="controles-inicio">
+                <button pButton label="EMPEZAR PARTIDA" class="btn-oro" (click)="iniciarNuevaPartida()"></button>
+            </div>
+        </div>
+    }
+
+    @if (preguntaActual && !juegoTerminado) {
+        <div class="quiz-section">
+            <div class="info-partida">
+                <span>Aciertos: {{ partidaActual?.numeroCorrectas }} / 5</span>
+            </div>
+
+            <div class="pregunta-card">
+                <h3>{{ preguntaActual.pregunta }}</h3>
+            </div>
+
+            <div class="respuestas-grid">
+                <button pButton [label]="preguntaActual.respuesta1" class="btn-respuesta" (click)="seleccionarRespuesta(1)"></button>
+                <button pButton [label]="preguntaActual.respuesta2" class="btn-respuesta" (click)="seleccionarRespuesta(2)"></button>
+                <button pButton [label]="preguntaActual.respuesta3" class="btn-respuesta" (click)="seleccionarRespuesta(3)"></button>
+                <button pButton [label]="preguntaActual.respuesta4" class="btn-respuesta" (click)="seleccionarRespuesta(4)"></button>
+            </div>
+        </div>
+    }
+
+    @if (juegoTerminado) {
+        <div class="final-section">
+            <h2 [ngClass]="{'texto-victoria': resultadoFinal.includes('GANADO'), 'texto-derrota': resultadoFinal.includes('PERDIDO')}">
+                {{ resultadoFinal }}
+            </h2>
+            <p>Has conseguido {{ partidaActual?.numeroCorrectas }} aciertos</p>
+            <button pButton label="VOLVER AL INICIO" class="p-button-outlined" (click)="preguntaActual = null; juegoTerminado = false"></button>
+        </div>
+    }
+</div>

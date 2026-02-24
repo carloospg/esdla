@@ -9,6 +9,7 @@ import { BuscarPersonaje } from './personajes/buscar-personaje/buscar-personaje'
 import { DetallePersonaje } from './personajes/detalle-personaje/detalle-personaje';
 import { ConfirmarPopup } from './modales/confirmar-popup/confirmar-popup';
 import { Padre } from './modales/padre/padre';
+import { Juego } from './juego/juego';
 
 export const routes: Routes = [
     { path: 'detalle', component: Detalle },
@@ -21,5 +22,6 @@ export const routes: Routes = [
     { path: 'editar/:id', component: DetallePersonaje },
     { path: 'crearPersonaje', component: DetallePersonaje },
     { path: 'modal', component: ConfirmarPopup },
-    { path: 'padre', component: Padre }
+    { path: 'padre', component: Padre },
+    { path: 'juego', component: Juego }
 ];
